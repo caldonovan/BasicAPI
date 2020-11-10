@@ -34,6 +34,13 @@ class ServerController extends Controller
         return response()->json($server, 201);
     }
 
+    public function update(Request $request, Server $server)
+    {
+        $server->update($request->all());
+
+        return response()->json($server, 200);
+    }
+
     /**
      * Delete a single record, return JSON response upon success.
      */
