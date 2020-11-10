@@ -40,4 +40,13 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * The inverse relationship for servers.
+     * A user can have many servers.
+     */
+    public function servers()
+    {
+        return $this->hasMany('App\Models\Server');
+    }
 }
