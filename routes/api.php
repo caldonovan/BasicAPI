@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\ServerController;
+use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -21,6 +23,12 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 // Get all the companies in the database and return JSON.
 Route::get('/companies', [CompanyController::class, 'index']);
+Route::get('/companies/{id}', [CompanyController::class, 'show']);
 
-// Get all the users in the database and return JSON | !! DANGEROUS !!
+// Get all the users in the database and return JSON
 Route::get('/users', [UserController::class, 'index']);
+Route::get('/users/{id}', [UserController::class, 'show']);
+
+// Get all the servers in the database and return JSON
+Route::get('/servers', [ServerController::class, 'index']);
+Route::get('/servers/{id}', [ServerController::class, 'show']);

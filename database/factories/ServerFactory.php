@@ -22,7 +22,9 @@ class ServerFactory extends Factory
      */
     public function definition()
     {
+        // Just a few possible games that could be added.
         $games = ['Garry\'s Mod', 'Half-Life 2', 'ArmA 3', 'ArmA 2', 'Rust', 'ARK'];
+
         return [
             'server_name' => 'Test Game Server',
             'server_description' => $this->faker->paragraph(),
