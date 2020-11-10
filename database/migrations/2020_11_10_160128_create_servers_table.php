@@ -21,6 +21,7 @@ class CreateServersTable extends Migration
             $table->string('server_game');
             $table->string('server_ip')->nullable();
             $table->unsignedBigInteger('user_id');
+            $table->softDeletes();
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->cascadeOnDelete();
