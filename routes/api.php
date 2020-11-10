@@ -23,12 +23,12 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 // Get all the companies in the database and return JSON.
 Route::get('/companies', [CompanyController::class, 'index']);
-Route::get('/companies/{id}', [CompanyController::class, 'show']);
+Route::get('/companies/{company}', [CompanyController::class, 'show']);
 
 // Get all the users in the database and return JSON
 Route::get('/users', [UserController::class, 'index']);
-Route::get('/users/{id}', [UserController::class, 'show']);
+Route::get('/users/{user}', [UserController::class, 'show']);
 
 // Get all the servers in the database and return JSON
 Route::get('/servers', [ServerController::class, 'index']);
-Route::get('/servers/{id}', [ServerController::class, 'show']);
+Route::get('/servers/{server}', [ServerController::class, 'show']);
