@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdvertController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\ServerController;
 use App\Http\Controllers\UserController;
@@ -41,3 +42,6 @@ Route::get('/servers/{server}', [ServerController::class, 'show']);
 Route::post('/servers', [ServerController::class, 'store']);
 Route::put('/servers/{server}', [ServerController::class, 'update']);
 Route::delete('/servers/{server}', [ServerController::class, 'delete']);
+
+// Get all the adverts and return JSON
+Route::get('/adverts', [AdvertController::class, 'index']);

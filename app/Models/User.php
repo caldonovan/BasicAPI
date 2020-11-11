@@ -49,4 +49,12 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Models\Server');
     }
+
+    /**
+     * A user can have many adverts.
+     */
+    public function adverts()
+    {
+        return $this->hasMany('App\Models\Advert');
+    }
 }
