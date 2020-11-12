@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Server;
+use Exception;
 use Illuminate\Http\Request;
 
 class ServerController extends Controller
@@ -12,7 +13,11 @@ class ServerController extends Controller
      */
     public function index()
     {
-        return Server::all();
+        try {
+            return Server::all();
+        } catch (Exception $e) {
+            return 'We\'ve caught an error!: ' . $e->getMessage();
+        }
     }
 
     /**
@@ -20,7 +25,11 @@ class ServerController extends Controller
      */
     public function show(Server $server)
     {
-        return $server;
+        try {
+            return $server;
+        } catch (Exception $e) {
+            return 'We\'ve caught an error!: ' . $e->getMessage();
+        }
     }
 
     /**
@@ -29,16 +38,24 @@ class ServerController extends Controller
      */
     public function store(Request $request)
     {
-        $server = Server::create($request->all());
+        try {
+            $server = Server::create($request->all());
 
-        return response()->json($server, 201);
+            return response()->json($server, 201);
+        } catch (Exception $e) {
+            return 'We\'ve caught an error!: ' . $e->getMessage();
+        }
     }
 
     public function update(Request $request, Server $server)
     {
-        $server->update($request->all());
+        try {
+            $server->update($request->all());
 
-        return response()->json($server, 200);
+            return response()->json($server, 201);
+        } catch (Exception $e) {
+            return 'We\'ve caught an error!: ' . $e->getMessage();
+        }
     }
 
     /**
@@ -46,8 +63,12 @@ class ServerController extends Controller
      */
     public function delete(Server $server)
     {
-        $server->delete();
+        try {
+            $server->delete();
 
-        return response()->json(null, 204);
+            return response()->json(null, 204);
+        } catch (Exception $e) {
+            return 'We\'ve caught an error!: ' . $e->getMessage();
+        }
     }
 }
