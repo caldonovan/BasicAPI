@@ -18,6 +18,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/v', function () {
+    return 'Laravel ' . app()->version();
+});
+
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
@@ -26,8 +30,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('/companies', [CompanyController::class, 'index']);
 Route::get('/companies/{company}', [CompanyController::class, 'show']);
 Route::post('/companies', [CompanyController::class, 'store']);
-Route::put('/company/{company}', [CompanyController::class, 'update']);
-Route::delete('/company/{company}', [CompanyController::class, 'delete']);
+Route::put('/companies/{company}', [CompanyController::class, 'update']);
+Route::delete('/companies/{company}', [CompanyController::class, 'delete']);
 
 // Get all the users in the database and return JSON
 Route::get('/users', [UserController::class, 'index']);
