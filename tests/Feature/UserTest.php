@@ -19,4 +19,9 @@ class UserTest extends TestCase
 
         $response->assertStatus(200);
     }
+
+    public function test_index_returns_all_users()
+    {
+        //
+    }
 }
