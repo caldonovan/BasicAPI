@@ -53,3 +53,7 @@ Route::delete('/servers/{server}', [ServerController::class, 'delete']);
 
 // Get all the adverts and return JSON
 Route::get('/adverts', [AdvertController::class, 'index']);
+Route::get('/adverts/{advert}', [AdvertController::class, 'show']);
+Route::post('/adverts', [AdvertController::class, 'store']);
+Route::put('/adverts/{advert}', [AdvertController::class, 'update']);
+Route::delete('/adverts/{advert}', [AdvertController::class, 'delete']);
