@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Exception;
 use App\Models\Company;
+use Exception;
 use Illuminate\Http\Request;
 
 class CompanyController extends Controller
@@ -13,17 +13,13 @@ class CompanyController extends Controller
         try {
             return Company::all();
         } catch (Exception $e) {
-            return "Encountered an error: " . $e->getMessage();
+            return response()->json('Error!: ' . $e->getMessage(), 404);
         }
     }
 
     public function show(Company $company)
     {
-        try {
-            return Company::find($company->id);
-        } catch (Exception $e) {
-            return "Encountered an error: " . $e->getMessage();
-        }
+        return Company::findOrFail($company->id);
     }
 
     public function store(Request $request)
