@@ -27,37 +27,13 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 /**
- * Companies
+ * If we are using standard CRUD methods in our controllers,
+ * we can use the Route::resource() method to auto-assign
+ * routes to their respective functions
+ *
+ * Use 'php artisan route:list' to see them.
  */
-Route::get('/companies', [CompanyController::class, 'index']);
-Route::get('/companies/{company}', [CompanyController::class, 'show']);
-Route::post('/companies', [CompanyController::class, 'store']);
-Route::put('/companies/{company}', [CompanyController::class, 'update']);
-Route::delete('/companies/{company}', [CompanyController::class, 'delete']);
-
-/**
- * Users
- */
-Route::get('/users', [UserController::class, 'index']);
-Route::get('/users/{user}', [UserController::class, 'show']);
-Route::post('/users', [UserController::class, 'store']);
-Route::put('/users/{user}', [UserController::class, 'update']);
-Route::delete('/users/{user}', [UserController::class, 'delete']);
-
-/**
- * Servers
- */
-Route::get('/servers', [ServerController::class, 'index']);
-Route::get('/servers/{server}', [ServerController::class, 'show']);
-Route::post('/servers', [ServerController::class, 'store']);
-Route::put('/servers/{server}', [ServerController::class, 'update']);
-Route::delete('/servers/{server}', [ServerController::class, 'delete']);
-
-/**
- * Adverts
- */
-Route::get('/adverts', [AdvertController::class, 'index']);
-Route::get('/adverts/{advert}', [AdvertController::class, 'show']);
-Route::post('/adverts', [AdvertController::class, 'store']);
-Route::put('/adverts/{advert}', [AdvertController::class, 'update']);
-Route::delete('/adverts/{advert}', [AdvertController::class, 'delete']);
+Route::resource('adverts', AdvertController::class);
+Route::resource('companies', CompanyController::class);
+Route::resource('servers', ServerController::class);
+Route::resource('users', UserController::class);
