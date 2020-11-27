@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Server;
-use Exception;
 use Illuminate\Http\Request;
 
 class ServerController extends Controller
@@ -13,11 +12,7 @@ class ServerController extends Controller
      */
     public function index()
     {
-        try {
-            return Server::all();
-        } catch (Exception $e) {
-            return 'We\'ve caught an error!: ' . $e->getMessage();
-        }
+        return Server::all();
     }
 
     /**
@@ -25,11 +20,7 @@ class ServerController extends Controller
      */
     public function show(Server $server)
     {
-        try {
-            return $server;
-        } catch (Exception $e) {
-            return 'We\'ve caught an error!: ' . $e->getMessage();
-        }
+        return Server::find($server->id);
     }
 
     /**
@@ -38,24 +29,16 @@ class ServerController extends Controller
      */
     public function store(Request $request)
     {
-        try {
-            $server = Server::create($request->all());
+        $server = Server::create($request->all());
 
-            return response()->json($server, 201);
-        } catch (Exception $e) {
-            return 'We\'ve caught an error!: ' . $e->getMessage();
-        }
+        return response()->json($server, 201);
     }
 
     public function update(Request $request, Server $server)
     {
-        try {
-            $server->update($request->all());
+        $server->update($request->all());
 
-            return response()->json($server, 201);
-        } catch (Exception $e) {
-            return 'We\'ve caught an error!: ' . $e->getMessage();
-        }
+        return response()->json($server, 201);
     }
 
     /**
@@ -63,12 +46,8 @@ class ServerController extends Controller
      */
     public function delete(Server $server)
     {
-        try {
-            $server->delete();
+        $server->delete();
 
-            return response()->json(null, 204);
-        } catch (Exception $e) {
-            return 'We\'ve caught an error!: ' . $e->getMessage();
-        }
+        return response()->json(null, 204);
     }
 }
