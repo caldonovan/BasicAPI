@@ -19,6 +19,9 @@ class AdvertController extends Controller
 
     public function store(Request $request)
     {
+        // $request->all() SHOULD NOT BE USED IN A PROD ENV.
+        // Realistically if implemented comercially, the
+        // request should be fully validated.
         $advert = Advert::create($request->all());
 
         return response()->json($advert, 201);
