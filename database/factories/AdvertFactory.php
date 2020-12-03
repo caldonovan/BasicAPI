@@ -43,8 +43,9 @@ class AdvertFactory extends Factory
             'body_style' => $this->faker->vehicleType,
             'transmission' => $this->faker->vehicleGearBoxType,
             'fuel_type' => $this->faker->vehicleFuelType,
-            'created_at' => now(),
-            'updated_at' => now(),
+
+            // This is a method of picking random user ID's to fulfill our defined relationship.
+            'user_id' => \App\Models\User::inRandomOrder()->pluck('id')->first(),
         ];
     }
 }

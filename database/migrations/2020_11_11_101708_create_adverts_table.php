@@ -29,7 +29,10 @@ class CreateAdvertsTable extends Migration
             $table->string('body_style')->nullable();
             $table->string('transmission');
             $table->string('fuel_type');
+            $table->unsignedBigInteger('user_id');
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users')->cascadeOnDelete();
         });
     }
 
