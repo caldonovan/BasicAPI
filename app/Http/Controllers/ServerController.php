@@ -29,6 +29,15 @@ class ServerController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'server_name' => 'required|string|max:255',
+            'server_description' => 'required|string|max:255',
+            'server_slots' => 'required|integer|max:3',
+            'server_game' => 'required|string|max:255',
+            'server_ip' => 'ip',
+            'user_id' => 'required'
+        ]);
+
         $server = Server::create($request->all());
 
         return response()->json($server, 201);
@@ -36,14 +45,20 @@ class ServerController extends Controller
 
     public function update(Request $request, Server $server)
     {
+        $this->validate($request, [
+            'server_name' => 'required|string|max:255',
+            'server_description' => 'required|string|max:255',
+            'server_slots' => 'required|integer|max:3',
+            'server_game' => 'required|string|max:255',
+            'server_ip' => 'ip',
+            'user_id' => 'required'
+        ]);
+
         $server->update($request->all());
 
         return response()->json($server, 201);
     }
 
-    /**
-     * Delete a single record, return JSON response upon success.
-     */
     public function delete(Server $server)
     {
         $server->delete();
