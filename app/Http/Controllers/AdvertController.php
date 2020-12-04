@@ -70,6 +70,15 @@ class AdvertController extends Controller
         return response()->json($advert->id . ' updated!', 200);
     }
 
+    /**
+     * Typically when we would be using authentication,
+     * we would want to check the user that is attempting
+     * to delete the resource, owns it.
+     *
+     * In this case, any sort of checking is pointless as
+     * we don't have anything to check against, the user could
+     * just add whichever user ID is needed.
+     */
     public function delete(Advert $advert)
     {
         $advert->delete();
