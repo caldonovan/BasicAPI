@@ -46,7 +46,7 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        return User::find($user->id);
+        //
     }
 
     /**
@@ -80,8 +80,6 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        $user->delete();
-
-        return response()->json(null, 204);
+        //
     }
 }

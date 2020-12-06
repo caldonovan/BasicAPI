@@ -63,6 +63,6 @@ class ServerController extends Controller
     {
         $server->delete();
 
-        return response()->json(null, 204);
+        return response()->json('Server ' . $server->id . ' deleted', 204);
     }
 }
